@@ -12,7 +12,4 @@
 
 @include('includes.footer')
 
-<h1>ciao
-
-</h1>
 
