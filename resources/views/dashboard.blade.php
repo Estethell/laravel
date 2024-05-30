@@ -2,6 +2,7 @@
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
             {{ __('Dashboard') }}
+            <a class="dropdown-item mx-3" href="{{ route('palestra.activities') }}">Home</a>
         </h2>
     </x-slot>
 

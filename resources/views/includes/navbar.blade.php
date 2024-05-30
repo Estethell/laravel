@@ -23,7 +23,7 @@
                 @auth
                     {{-- se utente loggato --}}
                     <li class="nav-item">
-                        <a href="{{ route('dashboard') }}" class="nav-link">
+                        <a href="{{ route('palestra.activities') }}" class="nav-link">
                             Home
                         </a>
                     </li>
