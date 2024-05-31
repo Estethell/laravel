@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('course_user', function (Blueprint $table) {
             $table->id();
+            $table->string('status');
             $table->foreignId('user_id')->constrained();
             $table->foreignId('course_id')->constrained();
             $table->timestamps();
@@ -24,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('status');
+        Schema::dropIfExists('course_user');
     }
 };

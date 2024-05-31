@@ -42,14 +42,16 @@ class ActivityController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show($course)
+    public function show($activity)
     {
-        $course = Course::with('activity', 'slot')->find($course);
+        $activity = Activity::with('courses', 'courses.slot')->find($activity);
         return view('palestra.about', [
 
-            'course' => $course,
+            'activity' => $activity,
 
         ]);
+
+        
     }
         
     

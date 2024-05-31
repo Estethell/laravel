@@ -26,7 +26,7 @@
         
     @empty
   
-    <p>Nessun prodotto</p>
+    <p>Nessun corso disponibile</p>
         
     @endforelse
   
