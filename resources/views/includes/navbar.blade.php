@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
+<nav class="navbar navbar-expand-lg bg-secondary-subtle">
     <div class="container-fluid">
         <a class="navbar-brand" href="/">EpiFlex</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -13,7 +13,7 @@
                         Attività
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="{{ route('palestra.activities') }}">Lista corsi</a></li>
+                        <li><a class="dropdown-item" href="{{ route('palestra.reservation.show') }}">Lista iscrizioni</a></li>
                        
                     </ul>
                 </li>
@@ -24,7 +24,7 @@
                     {{-- se utente loggato --}}
                     <li class="nav-item">
                         <a href="{{ route('palestra.activities') }}" class="nav-link">
-                            Home
+                            Lista corsi
                         </a>
                     </li>
                 @endauth
