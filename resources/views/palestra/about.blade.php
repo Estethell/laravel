@@ -10,7 +10,9 @@
       <img src="{{$course->activity->img}}" class="card-img-top p-1 pt-2" style=" height: 300px;"  alt="image">
       <div class="card-body">
      <h5 class="card-title"><span class="d-block fs-1 m-1 pb-3 border-bottom text-primary">{{$activity->name}}</span>
-        <span class="d-block fs-4 mt-4 text-info-emphasis">{{ $course->slot->day }}</span><span class="d-block fs-5 text-info">{{$course->location}}</span></h5></a>
+        <span class="d-block fs-4 mt-4 text-info-emphasis">{{ $course->slot->day }}</span><span class="d-block fs-5 text-info">{{$course->location}}</span>
+        <span class="d-block mx-2 font-monospace fs-5 mt-3 text-body-tertiary ">{{ $reservation->slot->start }}</span>
+        <span class="d-block mx-2 font-monospace fs-5 text-body-tertiary ">{{ $reservation->slot->end }}</span></h5></a>
         <form method="POST" action=" {{ route('palestra.reservation.index', ['activity' => $course->id]) }}">
              
             @csrf 
