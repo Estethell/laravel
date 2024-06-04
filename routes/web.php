@@ -26,9 +26,12 @@ Route::get('/palestra/about/{activity}', [ActivityController::class, 'show'])->n
 Route::post('/palestra/reservation/index/{activity}', [ReservationController::class, 'index'])->name('palestra.reservation.index');
 Route::get('/palestra/reservations', [ReservationController::class, 'show'])->name('palestra.reservation.show');
 Route::delete('/palestra/reservation/index/{activity}', [ReservationController::class, 'destroy'])->name('palestra.reservation.delete');
+Route::post('/palestra/reservation/approve/{activity}/{userId}', [ReservationController::class, 'approve'])->name('palestra.reservation.approve');
+Route::delete('/palestra/reservation/decline/{activity}/{userId}', [ReservationController::class, 'decline'])->name('palestra.reservation.decline');
 
 
 });
+
 
 
 Route::middleware('auth')->group(function () {

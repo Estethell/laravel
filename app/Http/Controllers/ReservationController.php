@@ -19,11 +19,40 @@ class ReservationController extends Controller
      */
     public function index($activityId)
     {
-        Auth::user()->courses()->attach($activityId, ['status'=>'pending']);
-
-        return redirect()->route('palestra.reservation.show');
 
         
+
+        Auth::user()->courses()->attach($activityId, ['status'=>'pending']);
+
+        return redirect()->route('palestra.reservation.show'); 
+
+        
+
+        
+    }
+
+    public function approve($activityId, $userId)
+    {
+        if (Auth::user()->role != 'admin') 
+        return abort(401);
+
+       
+
+        User::find($userId)->courses()->updateExistingPivot($activityId, ['status'=>'active']);
+        
+        return redirect()->route('palestra.reservation.show');
+        
+    }
+
+    public function decline($activityId, $userId)
+    {
+        if (Auth::user()->role != 'admin') 
+        return abort(401);
+
+       
+
+        User::find($userId)->courses()->updateExistingPivot($activityId, ['status'=>'rejected']);
+        return redirect()->route('palestra.reservation.show');
 
         
     }
@@ -52,13 +81,24 @@ class ReservationController extends Controller
         // $reservation = session()->get('reservation', []);
 
        
-
-       $utente = User::with('courses','courses.activity', 'courses.slot')->find(Auth::id());
+if (Auth::user()->role == 'admin') {
+       $courses = Course::with('users','activity', 'slot')->get();
         // dd($utente->courses);
-        return view('palestra.reservation', ['reservations'=>$utente->courses]);
+        return view('palestra.reservation', ['reservations'=>$courses]);
+}
+
+        else {
+            $utente = User::with('courses','courses.activity', 'courses.slot')->find(Auth::id());
+            // dd($utente->courses);
+            return view('palestra.reservation', ['reservations'=>$utente->courses]);
+        }
+
+        
        
     }
    
+    
+    
     public function destroy($courseId)
     {
         $course = Course::find($courseId);
